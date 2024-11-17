@@ -1,0 +1,23 @@
+* {
+  --color-bg: #171717;
+  --color-bg--lighter: #202020;
+  --color-bg--inverse: #ffffff;
+  --color-text: #ffffff;
+  --color-text--lighter: #666666;
+  --color-text--inverse: #000000;
+  --color-primary: #77ddee;
+  --color-secondary: #285577;
+  --color-text-onprimary: #000000;
+  --color-text-onsecondary: #ffffff;
+  --color-danger: #fc3f40;
+  --color-warning: #f7bf02;
+  --color-success: #adf802;
+  --color-text-ondanger: #ffffff;
+  --color-text-onwarning: #000000;
+  --color-text-onsuccess: #000000;
+}
+
+configuration {
+  font: "Source Code Pro 13";
+}
+
