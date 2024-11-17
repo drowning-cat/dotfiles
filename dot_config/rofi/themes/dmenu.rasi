@@ -1,0 +1,61 @@
+configuration {
+  display-drun: "";
+  drun-display-format: "{name}";
+}
+
+@theme "base"
+
+* {
+  color-bg: @--color-bg;
+  color-text: @--color-text;
+  color-bg-selected: @--color-primary;
+  color-text-onselected: @--color-text-onprimary;
+
+  color: @color-text;
+  background-color: transparent;
+}
+
+window {
+  y-offset: -23px;
+  height: 23px;
+  width: 100%;
+  location: north;
+  children: [horibox];
+  background-color: @color-bg;
+}
+
+horibox {
+  orientation: horizontal;
+  spacing: 2;
+  children: [prompt, entry, listview];
+}
+
+prompt {
+  padding: 0 5px 0 0;
+}
+
+entry {
+  expand: false;
+  width: 230px;
+  background-color: inherit;
+}
+
+listview {
+  layout: horizontal;
+  spacing: 5px;
+}
+
+element {
+  padding: 0 7px;
+  spacing: 5px;
+}
+
+element selected {
+  text-color: @color-text-onselected;
+  background-color: @color-bg-selected;
+}
+
+element-text {
+  text-color: inherit;
+}
+
