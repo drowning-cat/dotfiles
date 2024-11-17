@@ -1,0 +1,57 @@
+configuration {
+  show-icons: true;
+}
+
+@theme "base"
+
+* {
+  color-bg: @--color-bg;
+  color-select: @--color-primary;
+
+  background-color: transparent;
+}
+
+window {
+  anchor: north;
+  location: north;
+  y-offset: -30;
+  width: 100%;
+  background-color: @color-bg;
+}
+
+mainbox {
+  children: [listview];
+}
+
+listview {
+  flow: horizontal;
+  columns: 7;
+  lines: 1;
+  padding: 0 25px;
+  spacing: 50px;
+}
+
+element {
+  children: [margin, element-icon, margin];
+}
+
+@media(max-aspect-ratio: 1.8) {
+  element {
+    orientation: vertical;
+  }
+}
+
+margin {
+  expand: true;
+}
+
+element selected {
+  border: 0 0 5px 0;
+  border-color: @color-select;
+}
+
+element-icon {
+  size: 25%;
+  cursor: pointer;
+}
+
