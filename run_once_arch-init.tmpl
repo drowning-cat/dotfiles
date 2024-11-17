@@ -1,0 +1,26 @@
+{{ if eq .chezmoi.osRelease.id "arch" -}}
+#!/bin/sh
+
+echo "••• pkg: Install paru"
+
+if ! paru --version &>/dev/null; then
+  sudo pacman -S --needed base-devel
+  git clone https://aur.archlinux.org/paru.git
+  cd paru
+  makepkg -si
+else
+  echo "Skip the installation of paru"
+fi
+
+echo "••• pkg: Install essential packages"
+
+{{ range .packages.arch.paru -}}
+paru -S --needed --skipreview --noconfirm {{ . | quote }}
+{{ end -}}
+
+echo "••• xdg: Init xdg folders"
+
+xdg-user-dirs-update
+
+{{ end -}}
+

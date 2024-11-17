@@ -1,0 +1,5 @@
+[user]
+	name = Drowning Cat
+	email = shamal.ma.personal@gmail.com
+[core]
+	sshCommand = ssh -i ~/.ssh/drowning-cat
