@@ -1,0 +1,18 @@
+configuration {
+  kb-row-up:    "Control+k,Up";
+  kb-row-down:  "Control+j,Down";
+  kb-row-left:  "Control+h,Control+Page_Up";
+  kb-row-right: "Control+l,Control+Page_Down";
+
+  kb-element-next: "Control+n,Tab";
+  kb-element-prev: "Control+p,ISO_Left_Tab";
+  kb-accept-entry: "Control+y,Return,KP_Enter";
+
+  kb-remove-to-sol: "Control+u,Control+x";
+  kb-remove-to-eol: "";
+  kb-mode-complete: "";
+  kb-remove-char-back: "BackSpace,Shift+BackSpace";
+}
+
+@theme "base"
+
