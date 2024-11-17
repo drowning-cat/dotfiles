@@ -1,0 +1,19 @@
+{{ if eq .chezmoi.osRelease.id "arch" -}}
+#!/bin/sh
+# {{ output "git" "-C" (joinPath .chezmoi.homeDir ".config/zsh") "rev-parse" "HEAD" }}
+
+echo "••• zsh: 1. Install zsh dependencies"
+
+paru -S --needed --skipreview --noconfirm\
+  zsh fzf fd tree eza zoxide neovim wl-clipboard trash-cli github-cli keychain fnm-bin ttf-meslo-nerd
+
+echo "••• zsh: 2. Symlink .zshenv"
+
+ln -sf "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/zshenv" "$HOME/.zshenv"
+
+echo "••• zsh: 3. Make zsh your user's default shell"
+
+sudo chsh --shell $(which zsh) $USER
+
+{{ end -}}
+
