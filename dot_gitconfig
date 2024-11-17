@@ -1,0 +1,4 @@
+[include]
+	path = ~/.gitconfig.drowning-cat
+[includeIf "gitdir:Projects/rss/"]
+	path = ~/.gitconfig.lazy-goose
