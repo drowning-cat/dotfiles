@@ -1,0 +1,12 @@
+[".config/zsh"]
+	type = "git-repo"
+	url = "git@github.com.drowning-cat:drowning-cat/zsh.git"
+	refreshPeriod = "168h"
+	[".config/zsh".clone]
+		args = ["--recurse-submodules"]
+	[".config/zsh".pull]
+		args = ["--recurse-submodules"]
+[".config/nvim"]
+	type = "git-repo"
+	url = "git@github.com.drowning-cat:drowning-cat/nvim.git"
+	refreshPeriod = "168h"
