@@ -1,0 +1,7 @@
+[binds]
+
+<Ctrl+p> = prev
+<Ctrl+n> = next
+<Ctrl+y> = close
+<Ctrl+0> = reset
+
