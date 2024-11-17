@@ -1,0 +1,5 @@
+[user]
+	name = Lazy Goose
+	email = shamal.ma.rss@gmail.com
+[core]
+	sshCommand = ssh -i ~/.ssh/lazy-goose
