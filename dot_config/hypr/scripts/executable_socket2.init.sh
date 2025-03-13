@@ -2,6 +2,7 @@
 
 generate_color_scheme() {
   PYWAL_CACHE="${XDG_CACHE_HOME:-$HOME/.cache/wal}"
+  mkdir -p "$PYWAL_CACHE"
   current_monitor=$(hyprctl monitors | grep Monitor | awk '{print $2}' | tail -n 1)
   next_wallpaper=$(hyprctl hyprpaper listactive | awk -F ' = ' -v mon="$current_monitor" '$1 == mon {print $2}')
   prev_wallpaper=$(cat $PYWAL_CACHE/wal)
