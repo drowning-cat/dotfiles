@@ -1,5 +1,5 @@
 [font]
-size = 12.0
+size = 14.0
 normal = { family = "MesloLGS Nerd Font" }
 
 [keyboard]
@@ -9,7 +9,7 @@ bindings = [
   { key = "М", mods = "Control|Shift", action = "Paste" },
   { key = "С", mods = "Control|Shift", action = "Copy" },
   # Extended keys
-  # https://www.reddit.com/r/neovim/comments/12hyi9t/make_scr_cscr_stab_ctab_work_in_neovim_kitty
+  #  https://www.reddit.com/r/neovim/comments/12hyi9t/make_scr_cscr_stab_ctab_work_in_neovim_kitty
   { key = "Return", mods = "Shift",         chars = "\u001B[13;2u" },
   { key = "Return", mods = "Control",       chars = "\u001B[13;5u" },
   { key = "Return", mods = "Control|Shift", chars = "\u001B[13;6u" },
@@ -20,7 +20,7 @@ bindings = [
   { key = "j", mods = "Control|Shift", chars = "\u001B[74;5u" },
   { key = "k", mods = "Control|Shift", chars = "\u001B[75;5u" },
   { key = "l", mods = "Control|Shift", chars = "\u001B[76;5u" },
-  # https://github.com/alacritty/alacritty/issues/5680#issuecomment-2067723596
+  #  https://github.com/alacritty/alacritty/issues/5680#issuecomment-2067723596
   { key="Key0", mods = "Control", chars = "\u001b[48;5u" },
   { key="Key1", mods = "Control", chars = "\u001b[49;5u" },
   { key="Key2", mods = "Control", chars = "\u001b[50;5u" },
