@@ -1,0 +1,111 @@
+@import url("colors.css");
+
+@define-color color-bg @--color-bg;
+@define-color color-bg--inverse @--color-bg--inverse;
+@define-color color-bg-tooltip @--color-bg--lighter;
+@define-color color-text @--color-text;
+@define-color color-text--inverse @--color-text--inverse;
+@define-color color-text-tooltip @--color-text--lighter;
+@define-color color-bg-workspace @--color-primary;
+@define-color color-bg-workspace--active @--color-secondary;
+@define-color color-text-workspace @--color-text-onprimary;
+@define-color color-text-workspace--active @--color-text-onsecondary;
+@define-color color-danger @--color-danger;
+@define-color color-success @--color-success;
+@define-color color-warning @--color-warning;
+@define-color color-text-ondanger @--color-text-ondanger;
+@define-color color-text-onsuccess @--color-text-onsuccess;
+@define-color color-text-onwarning @--color-text-onwarning;
+
+* {
+  font-family: "Source Code Pro", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+}
+
+window#waybar {
+  color: @color-text;
+  background: @color-bg;
+}
+
+.modules-right>*>* {
+  margin: 0 4px;
+}
+
+tooltip {
+  padding: 0 2px;
+  color: @color-text-tooltip;
+  background: @color-bg-tooltip;
+}
+
+tooltip * {
+  font: initial;
+}
+
+button {
+  all: initial;
+}
+
+#workspaces button {
+  padding: 0 4px;
+  min-width: 10px;
+  color: @color-text-workspace;
+  background: @color-bg-workspace;
+}
+
+#workspaces button.focused,
+#workspaces button.active {
+  color: @color-text-workspace--active;
+  background: @color-bg-workspace--active;
+}
+
+#workspaces button.urgent {
+  color: @color-text-ondanger;
+  background: @color-danger;
+}
+
+#battery {
+  padding: 0 5px;
+  color: @color-text--inverse;
+  background: @color-bg--inverse;
+}
+
+#battery.critical:not(.charging) {
+  color: @color-text-ondanger;
+  background: @color-danger;
+}
+
+#battery.warning:not(.charging) {
+  color: @color-text-onwarning;
+  background: @color-warning;
+}
+
+#battery.charging {
+  color: @color-text-onsuccess;
+  background: @color-success;
+}
+
+#temperature.critical {
+  color: @color-danger;
+}
+
+#tray {
+  margin-left: 0;
+}
+
+#tray>*>* {
+  padding-top: 1px;
+  margin-right: 2px;
+}
+
+#tray>.passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray>.needs-attention {
+  -gtk-icon-effect: highlight;
+  background: @color-danger;
+}
+
+#custom-auto-cpufreq.wait {
+  color: @color-warning;
+}
