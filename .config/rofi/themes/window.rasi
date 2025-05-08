@@ -1,0 +1,69 @@
+configuration {
+  show-icons: true;
+}
+
+@theme "base"
+
+* {
+  color-bg: @--color-bg--lighter;
+  color-text: @--color-text;
+  color-placeholder-input: @--color-text--lighter;
+  color-border-input: @--color-primary;
+  color-text-row: @--color-primary;
+  color-text-row--selected: @--color-text-onprimary;
+  color-bg-row--selected: @--color-primary;
+
+  text-color: @color-text;
+  border-color: @--color-primary;
+  background-color: transparent;
+}
+
+window {
+  location: center;
+  width: 700;
+  height: 415;
+  background-color: @color-bg;
+}
+
+message {
+  padding: 10px;
+  border: 5px;
+}
+
+mainbox {
+  padding: 12px;
+}
+
+inputbar {
+  padding: 8px 16px;
+  border: 2px;
+  children: [entry];
+}
+
+entry {
+  placeholder: "Select";
+  placeholder-color: @color-placeholder-input;
+}
+
+listview {
+  margin: 12px 0 0 0;
+}
+
+element {
+  padding: 8px;
+  text-color: @color-text-row;
+}
+
+element selected  {
+  text-color: @color-text-row--selected;
+  background-color: @color-bg-row--selected;
+}
+
+element-icon {
+  size: 1em;
+}
+
+element-text {
+  text-color: inherit;
+}
+

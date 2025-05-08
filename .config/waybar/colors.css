@@ -1,0 +1,17 @@
+@define-color --color-bg #171717;
+@define-color --color-bg--lighter #202020;
+@define-color --color-bg--inverse #ffffff;
+@define-color --color-text #ffffff;
+@define-color --color-text--lighter #666666;
+@define-color --color-text--inverse #000000;
+@define-color --color-primary #77ddee;
+@define-color --color-secondary #285577;
+@define-color --color-text-onprimary #000000;
+@define-color --color-text-onsecondary #ffffff;
+@define-color --color-danger #fc3f40;
+@define-color --color-warning #f7bf02;
+@define-color --color-success #adf802;
+@define-color --color-text-ondanger #ffffff;
+@define-color --color-text-onwarning #000000;
+@define-color --color-text-onsuccess #000000;
+

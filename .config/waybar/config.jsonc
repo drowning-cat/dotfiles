@@ -1,0 +1,114 @@
+{
+  "height": 23,
+  "layer": "bottom",
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "mpris"
+  ],
+  "modules-right": [
+    "network",
+    "bluetooth",
+    "custom/wireguard",
+    "battery",
+    "custom/auto-cpufreq",
+    "temperature",
+    "wireplumber",
+    "clock",
+    "hyprland/language",
+    "tray"
+  ],
+  "custom/auto-cpufreq": {
+    "exec": "~/.config/waybar/modules/auto-cpufreq/auto-cpufreq.sh --status",
+    "on-click": "~/.config/waybar/modules/auto-cpufreq/auto-cpufreq.sh --next",
+    "on-click-right": "~/.config/waybar/modules/auto-cpufreq/auto-cpufreq.sh --reset",
+    "return-type": "json",
+    "interval": 1
+  },
+  "custom/wireguard": {
+    "exec": "$HOME/.config/waybar/modules/wireguard/wireguard.sh --status",
+    "on-click": "$HOME/.config/waybar/modules/wireguard/wireguard.sh --toggle",
+    "return-type": "json",
+    "interval": 1,
+    "format": "{icon}",
+    "format-icons": {
+      "connected": "<span color=\"#50fa7b\">VPN</span>",
+      "disconnected": "VPN"
+    }
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    }
+  },
+  "bluetooth": {
+    "format": " {status}",
+    "format-connected": " {device_alias}",
+    "on-click": "$HOME/.config/waybar/modules/hypr-popup/bluetooth.sh",
+    "on-click-right": "bluetoothctl show | grep 'PowerState: on' -q && bluetoothctl power off || bluetoothctl power on",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+  },
+  "clock": {
+    "format": "{:%d-%m-%Y %R}",
+    "format-alt": "{:%B %d %A %Y %R}",
+    "tooltip-format": "<small><tt>{calendar}</tt></small>",
+    "calendar": {
+      "format": {
+        "months": "<span><b>{}</b></span>",
+        "days": "<span><b>{}</b></span>",
+        "weeks": "<span><b>W{}</b></span>",
+        "weekdays": "<span><b>{}</b></span>",
+        "today": "<span background='white' color='black'><b>{}</b></span>"
+      }
+    }
+  },
+  "hyprland/language": {
+    "tooltip": false,
+    "format": "{short}"
+  },
+  "mpris": {
+    "format": "{player_icon}  {dynamic}",
+    "format-paused": "{status_icon}  {dynamic}",
+    "dynamic-order": [
+      "artist",
+      "title"
+    ],
+    "artist-len": 20,
+    "title-len": 30,
+    "player-icons": {
+      "default": ">"
+    },
+    "status-icons": {
+      "paused": "x"
+    },
+    "on-click-middle": "playerctld shift",
+    "tooltip": false
+  },
+  "network": {
+    "format-wifi": "{ifname} ●",
+    "format": "{ifname} ●",
+    "format-disconnected": "○",
+    "on-click": "$HOME/.config/waybar/modules/hypr-popup/network.sh",
+    "tooltip-format": "{ifname} via {gwaddr}",
+    "tooltip-format-wifi": "{essid}\tStrength {signalStrength}%",
+    "tooltip-format-ethernet": false,
+    "tooltip-format-disconnected": "Network off"
+  },
+  "temperature": {
+    "critical-threshold": 95,
+    "tooltip-format": "Temperature {temperatureC} ℃ "
+  },
+  "wireplumber": {
+    "format": "{volume}%",
+    "format-muted": "[x]",
+    "format-bluetooth": "{volume}% ({desc})",
+    "format-bluetooth-muted": "[x] ({desc})",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  }
+}

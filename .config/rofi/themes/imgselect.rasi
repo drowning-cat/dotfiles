@@ -1,0 +1,71 @@
+configuration {
+  show-icons: true;
+
+  kb-row-up:    "k,Control+k,Up";
+  kb-row-down:  "j,Control+j,Down";
+  kb-row-left:  "h,Control+h,Left";
+  kb-row-right: "l,Control+l,Right";
+
+  kb-move-char-back: "";
+  kb-move-char-forward: "";
+}
+
+@theme "base"
+
+* {
+  color-bg: @--color-bg;
+  color-select: @--color-primary;
+
+  background-color: transparent;
+}
+
+window {
+  anchor: north;
+  location: north;
+  y-offset: -30;
+  width: 100%;
+  background-color: @color-bg;
+  padding: 25px;
+}
+
+mainbox {
+  children: [listview];
+}
+
+listview {
+  scrollbar: true;
+  flow: horizontal;
+  columns: 5;
+  lines: 3;
+  spacing: 50px;
+}
+
+scrollbar {
+  background-color: @color-bg;
+  handle-color: @color-select;
+}
+
+element {
+  children: [margin, element-icon, margin];
+}
+
+@media(max-aspect-ratio: 1.8) {
+  element {
+    orientation: vertical;
+  }
+}
+
+margin {
+  expand: true;
+}
+
+element selected {
+  border: 0 0 5px 0;
+  border-color: @color-select;
+}
+
+element-icon {
+  size: 25%;
+  cursor: pointer;
+}
+

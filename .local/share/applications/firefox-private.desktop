@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Firefox Private Window
+Icon=firefox
+Keywords=fpw
+Exec=/usr/lib/firefox/firefox --private-window %u
+
