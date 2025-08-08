@@ -1,2 +1,2 @@
-TerminalEmulator=/home/clover/.config/hypr/scripts/run-terminal.sh
+TerminalEmulator=.config/hypr/scripts/run-terminal.sh
 TerminalEmulatorDismissed=true
