@@ -1,177 +1,203 @@
-alacritty 0.15.1-1
-alsa-utils 1.2.14-1
-anydesk-bin 7.0.0-1
-audiorelay 0.27.5-6
-auto-cpufreq 2.5.0-1
-aws-cli 1.40.22-1
-base 3-2
-base-devel 1-2
-bat 0.25.0-4
-bc 1.08.2-1
-bind 9.20.9-1
-blender 17:4.4.3-2
-bluez 5.82-1
-bluez-utils 5.82-1
-bottles 2:51.21-3
-breeze 6.3.5-1
-breeze-gtk 6.3.5-1
-brightnessctl 0.5.1-3
-btop 1.4.3-3
-cava 0.10.4-3
-chafa 1.14.5-1
-cliphist 1:0.6.1-1
-cool-retro-term 1.2.0-4
-cups 2:2.4.12-2
-deluge 1:2.2.0-1
-deluge-gtk 1:2.2.0-1
-deno 2.2.9-1
-discord 1:0.0.95-1
-docker 1:28.1.1-1
-docker-buildx 0.24.0-1
-docker-compose 2.36.2-1
-dolphin 25.04.1-1
-dosfstools 4.2-5
-efibootmgr 18-3
-exfat-utils 1.4.0-4
-eza 0.21.4-1
-fd 10.2.0-1
-ffmpeg 2:7.1.1-3
-figma-linux-bin 0.11.5-0
-firefox 139.0.1-1
-flatpak 1:1.16.1-1
-fnm-bin 1.38.1-1
-fq 0.15.0-1
-fzf 0.62.0-1
-ghostty 1.1.3-1
-git 2.49.0-2
-git-delta 0.18.2-4
-github-cli 2.74.0-1
-gnome-boxes 48.0-4
-gnome-terminal 3.56.2-1
-go 2:1.24.3-1
-google-chrome 137.0.7151.55-1
-gparted 1.7.0-1
-gvfs 1.57.2-3
-gvfs-mtp 1.57.2-3
-htop 3.4.1-1
-hypridle 0.1.6-4
-hyprland 0.49.0-1
-hyprlock 0.8.2-1
-hyprpaper 0.7.5-1
-hyprpicker 0.4.5-2
-hyprpolkitagent 0.1.2-7
-hyprshot-git 1.3.0.r2.f95068d-1
-hyprsunset 0.2.0-4
-imv 4.5.0-5
-intel-media-driver 25.2.3-1
-intel-media-sdk 23.2.2-4
-intel-ucode 20250512-1
-iwd 3.8-1
-jq 1.7.1-2
-kdeconnect 25.04.1-1
-keychain 2.9.5-1
-kitty 0.42.1-1
-kvantum 1.1.5-1
-kvantum-qt5 1.1.5-1
-kvkonqi 1.1-2
-lazydocker-bin 0.24.1-1
-lazygit 0.51.1-1
-lib32-libpipewire 1:1.4.4-1
-lib32-pipewire 1:1.4.4-1
-lib32-zlib 1.3.1-2
-libappindicator-gtk3 12.10.0.r298-4
-libreoffice-fresh 25.2.3-3
-linux 6.14.9.arch1-1
-linux-firmware 20250508.788aadc8-2
-linux-headers 6.14.9.arch1-1
-linux-lts 6.12.31-1
-linux-lts-headers 6.12.31-1
-lua-language-server 3.14.0-1
-luarocks 3.11.1-2
-lvm2 2.03.32-1
-mailutils 3.19-1
-mako 1.10.0-1
-man-db 2.13.1-1
-mate-polkit 1.28.1-2
-mpv 1:0.40.0-3
-nautilus 48.2-1
-neovim 0.11.1-2
-noto-fonts-cjk 20240730-1
-noto-fonts-emoji 1:2.047-1
-ntfs-3g 2022.10.3-2
-nwg-look 1.0.5-1
-obsidian 1.8.10-1
-openssh 10.0p1-3
-overskride-bin 0.6.1-1
-paclog 2.0-3
-paru 2.0.4-1
-paru-debug 2.0.4-1
-pavucontrol 1:6.1-1
-phinger-cursors 2.1-1
-pipewire 1:1.4.4-1
-pipewire-alsa 1:1.4.4-1
-pipewire-docs 1:1.4.4-1
-pipewire-pulse 1:1.4.4-1
-playerctl 2.4.1-4
-polkit 126-2
-posting 2.7.0-1
-postman-bin 11.47.1-1
-prettier 3.5.3-2
-progress 0.17-1
-python-pip 25.1.1-1
-python-pipx 1.7.1-2
-qimgv 1.0.3+alpha+94+ge2675f13-1
-qpwgraph 0.9.2-1
-qt5-wayland 5.15.17+kde+r57-1
-qt5ct 1.9-1
-qt6ct 0.10-3
-ranger 1.9.4-4
-rar 7.11-1
-rclone 1.69.3-1
-ripgrep 14.1.1-1
-rofi-wayland 1.7.9.1-1
-rsync 3.4.1-2
-sane-gt68xx-firmware 1.0-10
-sbctl 0.17-1
-showmethekey 1.18.3-1
-socat 1.8.0.3-1
-sof-firmware 2025.01.1-1
-splix 2.0.1-1
-spotify-launcher 0.6.3-1
-subversion 1.14.5-3
-sudo 1.9.16.p2-2
-systemd-resolvconf 257.6-1
-telegram-desktop 5.14.3-2
-thunar 4.20.3-1
-thunar-archive-plugin 0.6.0-1
-thunar-media-tags-plugin 0.6.0-1
-thunar-volman 4.20.0-2
-thunderbird 138.0.2-1
-tmux-git 10541_3.5.r263.g1dbceaa7-1
-trash-cli 0.24.5.26-2
-tree 2.2.1-1
-ttf-firacode-nerd 3.4.0-1
-ttf-liberation 2.1.5-2
-ttf-meslo-nerd 3.4.0-1
-tumbler 4.20.0-3
-unzip 6.0-22
-vesktop-bin 1.5.6-3
-vi 1:070224-6
-vim 9.1.1376-1
-visual-studio-code-bin 1.100.2-1
-vlc 3.0.21-20
-waybar 0.12.0-1
-wev 1.0.0-13
-wf-recorder 0.5.0-2
-wget 1.25.0-2
-wireguard-tools 1.0.20250521-1
-wl-clipboard 1:2.2.1-2
-wlsunset 0.4.0-1
-xdg-desktop-portal 1.20.3-1
-xdg-desktop-portal-gtk 1.15.3-1
-xdg-desktop-portal-hyprland 1.3.9-9
-xdg-user-dirs 0.18-2
-yq 3.4.3-2
-zip 3.0-11
-zoxide 0.9.8-2
-zsh 5.9-5
+ags-hyprpanel-git
+alacritty
+alsa-utils
+anydesk-bin
+ast-grep
+audiorelay
+auto-cpufreq
+aws-cli
+base
+base-devel
+bat
+bc
+bind
+blender
+bluez
+bluez-utils
+bottles
+breeze
+breeze-gtk
+brightnessctl
+btop
+cava
+chafa
+cliphist
+cmatrix
+cool-retro-term
+cups
+deluge
+deluge-gtk
+deno
+discord
+docker
+docker-buildx
+docker-compose
+dolphin
+dosfstools
+efibootmgr
+exfat-utils
+eza
+fd
+ffmpeg
+figma-linux-bin
+firefox
+flatpak
+fnm-bin
+fq
+fzf
+ghostty
+git
+git-delta
+git-graph
+github-cli
+gnome-boxes
+gnome-terminal
+gnu-free-fonts
+go
+google-chrome
+gparted
+gvfs
+gvfs-mtp
+htop
+hypridle
+hyprland
+hyprlock
+hyprpaper
+hyprpicker
+hyprpolkitagent
+hyprshot-git
+hyprsunset
+imv
+intel-media-driver
+intel-media-sdk
+intel-ucode
+iwd
+jq
+jujutsu
+kdeconnect
+keychain
+kitty
+kvantum
+kvantum-qt5
+kvkonqi
+lazydocker-bin
+lazygit
+lib32-libpipewire
+lib32-pipewire
+lib32-zlib
+libappindicator-gtk3
+libreoffice-fresh
+linux
+linux-firmware
+linux-headers
+linux-lts
+linux-lts-headers
+lua-language-server
+luarocks
+lvm2
+mailutils
+mako
+man-db
+mate-polkit
+mpv
+nautilus
+neovim-git
+noto-fonts-cjk
+noto-fonts-emoji
+ntfs-3g
+nwg-look
+obsidian
+openssh
+overskride-bin
+paclog
+paru
+paru-debug
+pavucontrol
+phinger-cursors
+pipewire
+pipewire-alsa
+pipewire-docs
+pipewire-pulse
+playerctl
+polkit
+posting
+postman-bin
+prettier
+progress
+python-pip
+python-pipx
+qimgv
+qpwgraph
+qt5-wayland
+qt5ct
+qt6ct
+ranger
+rar
+rclone
+ripgrep
+rofi-wayland
+rsync
+sane-gt68xx-firmware
+sbctl
+showmethekey
+socat
+sof-firmware
+splix
+spotify-launcher
+subversion
+sudo
+systemd-resolvconf
+telegram-desktop
+texlive-bibtexextra
+texlive-binextra
+texlive-context
+texlive-fontsextra
+texlive-fontsrecommended
+texlive-fontutils
+texlive-formatsextra
+texlive-games
+texlive-humanities
+texlive-latex
+texlive-latexextra
+texlive-latexrecommended
+texlive-luatex
+texlive-mathscience
+texlive-metapost
+texlive-music
+texlive-pictures
+texlive-pstricks
+texlive-publishers
+texlive-xetex
+thunar
+thunar-archive-plugin
+thunar-media-tags-plugin
+thunar-volman
+thunderbird
+tmux-git
+trash-cli
+tree
+ttf-firacode-nerd
+ttf-liberation
+ttf-meslo-nerd
+tumbler
+unzip
+vesktop-bin
+vi
+vim
+visual-studio-code-bin
+vlc
+waybar
+wev
+wf-recorder
+wget
+wireguard-tools
+wl-clipboard
+wlsunset
+xdg-desktop-portal
+xdg-desktop-portal-gtk
+xdg-desktop-portal-hyprland
+xdg-user-dirs
+yq
+zip
+zoxide
+zsh
