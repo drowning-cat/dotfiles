@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Nvim
+Icon=nvim
+Keywords=nv;nvim;vi;vm;vim
+Categories=System;TerminalEmulator;
+Exec=sh -c '$HOME/.config/hypr/scripts/run-terminal.sh nvim %f'
+Description=Run neovim

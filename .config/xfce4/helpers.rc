@@ -1,2 +1,1 @@
-TerminalEmulator=.config/hypr/scripts/run-terminal.sh
-TerminalEmulatorDismissed=true
+TerminalEmulator=~/.config/hypr/scripts/run-terminal.sh
