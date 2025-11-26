@@ -5,7 +5,7 @@
 	<name>Open Terminal Here</name>
 	<submenu></submenu>
 	<unique-id>1764183096496977-1</unique-id>
-	<command>sh -c &quot;$HOME/.config/hypr/scripts/run-terminal.sh&quot;</command>
+	<command>~/.config/hypr/scripts/run-terminal.sh -c %f</command>
 	<description></description>
 	<range>*</range>
 	<patterns>*</patterns>
