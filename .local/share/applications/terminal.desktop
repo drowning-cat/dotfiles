@@ -5,4 +5,4 @@ Description=Run terminal with an anonymous tmux session
 Icon=alacritty
 Keywords=term;terminal;tty;pty;nvim;tmux
 Categories=System;TerminalEmulator;
-Exec=sh -c '$HOME/.config/hypr/scripts/run-terminal.sh'
+Exec=term.sh

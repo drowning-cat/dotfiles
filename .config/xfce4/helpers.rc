@@ -1,1 +1,1 @@
-TerminalEmulator=~/.config/hypr/scripts/run-terminal.sh
+TerminalEmulator=term.sh
