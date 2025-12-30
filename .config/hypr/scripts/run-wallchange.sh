@@ -14,5 +14,5 @@ wallpaper=$(
     rofi -dmenu -theme imgselect -theme-str "listview {columns:$cols;lines:$rows;}"
 )
 
-hyprctl hyprpaper reload ,"$wallpaper"
+hyprctl hyprpaper wallpaper ,"$wallpaper"
 
