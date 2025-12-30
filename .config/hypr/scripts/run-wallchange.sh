@@ -6,8 +6,8 @@ imgnum=$(echo "$images" | wc -l)
 maxrow=2
 
 cols=5
-rows=$(( (imgnum + cols) / cols ))
-rows=$(( rows > maxrow ? maxrow : rows ))
+rows=$(((imgnum + cols) / cols))
+rows=$((rows > maxrow ? maxrow : rows))
 
 wallpaper=$(
   for i in $images; do printf "$i\x00icon\x1f$i\n"; done |
@@ -15,4 +15,4 @@ wallpaper=$(
 )
 
 hyprctl hyprpaper wallpaper ,"$wallpaper"
-
+ln -f "$wallpaper" "${XDG_CACHE_HOME:-$HOME/hyprpaper}"
