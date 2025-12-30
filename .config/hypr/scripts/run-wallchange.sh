@@ -15,4 +15,4 @@ wallpaper=$(
 )
 
 hyprctl hyprpaper wallpaper ,"$wallpaper"
-ln -f "$wallpaper" "${XDG_CACHE_HOME:-$HOME/hyprpaper}"
+ln -f "$wallpaper" "${XDG_CACHE_HOME:-$HOME/.cache}/hyprpaper"
