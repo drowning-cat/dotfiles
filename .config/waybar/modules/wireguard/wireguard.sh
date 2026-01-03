@@ -11,11 +11,10 @@ _sudo() {
 }
 
 case "$arg_cmd" in
-  --status)
-    find /sys/class/net -name "$arg_interface" | grep -q "." && echo "$OPENED" || echo "$CLOSED"
-    ;;
-  --toggle)
-    _sudo wg-quick down "$arg_interface" || _sudo wg-quick up "$arg_interface"
-    ;;
+--status)
+  find /sys/class/net -name "$arg_interface" | grep -q "." && echo "$OPENED" || echo "$CLOSED"
+  ;;
+--toggle)
+  _sudo wg-quick down "$arg_interface" || _sudo wg-quick up "$arg_interface"
+  ;;
 esac
-
