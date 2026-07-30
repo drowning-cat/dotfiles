@@ -1,15 +1,15 @@
--- ════════════════════════════════════════════
--- Variables
--- ════════════════════════════════════════════
+-- ============================================
+-- Share
+-- ============================================
 
 local home = os.getenv("HOME")
 local script_path = home .. "/.config/hypr/scripts"
 
 local active_opacity = 0.9
 
--- ════════════════════════════════════════════
+-- ============================================
 -- Environment
--- ════════════════════════════════════════════
+-- ============================================
 
 local cursor_theme = "phinger-cursors-dark"
 local cursor_size = "22"
@@ -26,25 +26,25 @@ hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
 
 hl.env("HYPRSHOT_DIR", home .. "/Pictures/Screenshots")
 
--- ════════════════════════════════════════════
+-- ============================================
 -- Monitors
--- ════════════════════════════════════════════
+-- ============================================
 
-hl.monitor({ output = "eDP-1", mode = "1920x1080", position = "0x0", scale = "1" })
-hl.monitor({ output = "DP-1", mode = "1680x1050", position = "1920x0", scale = "1" })
+hl.monitor({ output = "eDP-1", mode = "1920x1080", position = "0x0", scale = 1 })
+hl.monitor({ output = "DP-1", mode = "1680x1050", position = "1920x0", scale = 1 })
 
--- ════════════════════════════════════════════
+-- ============================================
 -- Input Devices
--- ════════════════════════════════════════════
+-- ============================================
 
-hl.device({
-	name = "epic-mouse-v1",
-	sensitivity = -0.5,
-})
+-- hl.device({
+-- 	name = "epic-mouse-v1",
+-- 	sensitivity = -0.5,
+-- })
 
--- ════════════════════════════════════════════
+-- ============================================
 -- Autostart
--- ════════════════════════════════════════════
+-- ============================================
 
 hl.on("hyprland.start", function()
 	hl.exec_cmd("hypridle")
@@ -57,14 +57,14 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("wl-paste --type text --watch cliphist store")
 	hl.exec_cmd("wlsunset -t 500 -T 6500 -l 53.89 -L 27.56")
 	hl.exec_cmd("flatpak run net.hovancik.Stretchly")
-	hl.exec_cmd("hyprctl dispatch exec [workspace 1 silent] " .. script_path .. "/run-terminal.sh")
-	hl.exec_cmd("hyprctl dispatch exec [workspace 9 silent] spotify-launcher")
-	hl.exec_cmd("hyprctl dispatch exec [workspace 10 silent] telegram-desktop")
+	hl.exec_cmd("spotify-launcher")
+	hl.exec_cmd("telegram-desktop")
+	hl.exec_cmd(script_path .. "/run-terminal.sh", { workspace = "1 silent" })
 end)
 
--- ════════════════════════════════════════════
+-- ============================================
 -- Configuration
--- ════════════════════════════════════════════
+-- ============================================
 
 hl.config({
 	ecosystem = {
@@ -78,10 +78,6 @@ hl.config({
 			active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
 			inactive_border = "rgba(595959aa)",
 		},
-	},
-	scrolling = {
-		fullscreen_on_one_column = true,
-		column_width = 0.9,
 	},
 	cursor = {
 		no_warps = true,
@@ -113,9 +109,16 @@ hl.config({
 	},
 })
 
--- ════════════════════════════════════════════
+-- hl.config({
+-- 	scrolling = {
+-- 		fullscreen_on_one_column = true,
+-- 		column_width = 0.9,
+-- 	},
+-- })
+
+-- ============================================
 -- Animations
--- ════════════════════════════════════════════
+-- ============================================
 
 hl.curve("wind", { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.0 } } })
 
@@ -128,9 +131,9 @@ hl.animation({ leaf = "specialWorkspace", enabled = false })
 
 hl.animation({ leaf = "workspaces", enabled = true, speed = 5, bezier = "wind" })
 
--- ════════════════════════════════════════════
+-- ============================================
 -- Key Bindings
--- ════════════════════════════════════════════
+-- ============================================
 
 hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
 
@@ -165,11 +168,9 @@ hl.bind(main_mod .. " + W", hl.dsp.exec_cmd("killall -SIGUSR1 waybar"))
 hl.bind(main_mod .. " + SHIFT + W", hl.dsp.exec_cmd("killall -SIGKILL waybar; waybar; pgrep hyprpaper || hyprpaper"))
 
 -- Monitor toggle
-hl.bind(
-	main_mod .. " + SHIFT + F1",
-	hl.dsp.exec_cmd("hyprctl keyword monitor eDP-1,1920x1080,0x0,1"),
-	{ locked = true }
-)
+hl.bind(main_mod .. " + SHIFT + F1", function()
+	hl.monitor({ output = "eDP-1", mode = "1920x1080", position = "0x0", scale = 1 })
+end)
 
 -- Focus
 hl.bind(main_mod .. " + h", hl.dsp.focus({ direction = "left" }))
@@ -262,26 +263,30 @@ hl.bind("SHIFT + CTRL + Print", hl.dsp.exec_cmd("hyprshot -m window"))
 hl.bind("SHIFT + " .. main_mod .. " + Print", hl.dsp.exec_cmd("hyprshot -m output -m active"))
 
 -- Quick edit
-local start_terminal = function(cmd)
-	return hl.dsp.exec_cmd(script_path .. '/run-terminal.sh " ' .. cmd .. ' "')
+local dsp_exec_terminal = function(cmd, opts)
+	local exec_cmd = script_path .. "/run-terminal.sh " .. "'" .. cmd .. "'"
+	return hl.dsp.exec_cmd(exec_cmd, opts)
 end
-hl.bind(main_mod .. " + F1", start_terminal("cd ~/.config/nvim && nvim init.lua"))
-hl.bind(main_mod .. " + F2", start_terminal("cd ~/.config/hypr && nvim hyprland.lua"))
+hl.bind(main_mod .. " + F1", dsp_exec_terminal("cd ~/.config/nvim && nvim init.lua"))
+hl.bind(main_mod .. " + F2", dsp_exec_terminal("cd ~/.config/hypr && nvim hyprland.lua"))
 
 hl.window_rule({
+	name = "gimp-center-toolbox",
 	match = { class = "^(Gimp-)", title = "negative:^(GNU Image Manipulation Program)$" },
+	float = true,
 	center = true,
 	min_size = { 450, 320 },
 	max_size = { 1344, 756 },
 })
 
--- ════════════════════════════════════════════
+-- ============================================
 -- Window Rules
--- ════════════════════════════════════════════
+-- ============================================
 
-hl.workspace_rule({ workspace = "special:scratchpad", gaps_out = 25 })
+hl.workspace_rule({ workspace = "special:magic", gaps_out = 25 })
 
 hl.window_rule({
+	name = "float-file-pickers",
 	match = { class = "^(Code|xdg-desktop-portal-gtk|firefox)$", title = "^(Open|File Upload)" },
 	float = true,
 	center = true,
@@ -292,37 +297,44 @@ hl.window_rule({
 })
 
 hl.window_rule({
+	name = "firefox-opacity",
 	match = { class = "^(firefox)$" },
 	opacity = "1.0 override " .. active_opacity .. " override 1.0",
 })
 
 hl.window_rule({
+	name = "imv-float",
 	match = { class = "^(imv)$" },
 	float = true,
 })
 
 hl.window_rule({
+	name = "qimgv-float",
 	match = { class = "^(qimgv)$" },
 	float = true,
 	size = { 1280, 720 },
 })
 
 hl.window_rule({
+	name = "spotify-workspace",
 	match = { class = "^(Spotify)$" },
 	workspace = "9",
 })
 
 hl.window_rule({
+	name = "telegram-workspace",
 	match = { class = "^(org.telegram.desktop)$" },
 	workspace = "10",
 })
 
 hl.window_rule({
+	name = "vesktop-workspace",
 	match = { class = "^(vesktop)$" },
 	workspace = "10",
 })
 
 hl.window_rule({
+	name = "xwaylandvideobridge-hide",
 	match = { class = "^(xwaylandvideobridge)$" },
 	opacity = "0.0 override",
 	no_anim = true,
@@ -332,6 +344,7 @@ hl.window_rule({
 })
 
 hl.window_rule({
+	name = "thunar-rename-float",
 	match = { class = "^(thunar)$", title = '^(Rename ".*")$' },
 	float = true,
 })
