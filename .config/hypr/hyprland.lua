@@ -1,49 +1,52 @@
+-- ════════════════════════════════════════════
+-- Variables
+-- ════════════════════════════════════════════
+
 local home = os.getenv("HOME")
 local script_path = home .. "/.config/hypr/scripts"
 
 local active_opacity = 0.9
 
--- Env --
+-- ════════════════════════════════════════════
+-- Environment
+-- ════════════════════════════════════════════
 
 local cursor_theme = "phinger-cursors-dark"
-local cursor_size = tostring(22)
+local cursor_size = "22"
 
 hl.env("XCURSOR_THEME", cursor_theme)
 hl.env("XCURSOR_SIZE", cursor_size)
 hl.env("HYPRCURSOR_THEME", cursor_theme)
 hl.env("HYPRCURSOR_SIZE", cursor_size)
 
-hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
-hl.env("XDG_SESSION_DESKTOP", "Hyprland")
-hl.env("XDG_SESSION_TYPE", "wayland")
-
-hl.env("GDK_BACKEND", "wayland,x11,*")
 hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 hl.env("QT_QPA_PLATFORMTHEME", "qt5ct")
 hl.env("QT_AUTO_SCREEN_SCALE_FACTOR", "1")
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
-hl.env("SDL_VIDEODRIVER", "wayland,x11,windows")
-hl.env("CLUTTER_BACKEND", "wayland")
 
 hl.env("HYPRSHOT_DIR", home .. "/Pictures/Screenshots")
 
--- Monitor --
+-- ════════════════════════════════════════════
+-- Monitors
+-- ════════════════════════════════════════════
 
-hl.monitor({ output = "", mode = "preferred", position = "auto", scale = "1" })
 hl.monitor({ output = "eDP-1", mode = "1920x1080", position = "0x0", scale = "1" })
 hl.monitor({ output = "DP-1", mode = "1680x1050", position = "1920x0", scale = "1" })
 
--- Devices --
+-- ════════════════════════════════════════════
+-- Input Devices
+-- ════════════════════════════════════════════
 
 hl.device({
 	name = "epic-mouse-v1",
 	sensitivity = -0.5,
 })
 
--- Autostart --
+-- ════════════════════════════════════════════
+-- Autostart
+-- ════════════════════════════════════════════
 
 hl.on("hyprland.start", function()
-	hl.exec_cmd("dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 	hl.exec_cmd("hypridle")
 	hl.exec_cmd("hyprpaper")
 	hl.exec_cmd("hyprpolkitagent")
@@ -59,14 +62,15 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("hyprctl dispatch exec [workspace 10 silent] telegram-desktop")
 end)
 
--- Options --
+-- ════════════════════════════════════════════
+-- Configuration
+-- ════════════════════════════════════════════
 
 hl.config({
 	ecosystem = {
 		no_update_news = true,
 	},
 	general = {
-		layout = "master",
 		gaps_in = 1,
 		gaps_out = 1,
 		border_size = 2,
@@ -74,15 +78,10 @@ hl.config({
 			active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
 			inactive_border = "rgba(595959aa)",
 		},
-		resize_on_border = true,
-	},
-	dwindle = {
-		preserve_split = true,
 	},
 	scrolling = {
 		fullscreen_on_one_column = true,
 		column_width = 0.9,
-		direction = "right",
 	},
 	cursor = {
 		no_warps = true,
@@ -114,21 +113,26 @@ hl.config({
 	},
 })
 
--- Animations --
+-- ════════════════════════════════════════════
+-- Animations
+-- ════════════════════════════════════════════
 
 hl.curve("wind", { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.0 } } })
 
-hl.animation({ leaf = "windows", speed = 0, enabled = false })
-hl.animation({ leaf = "layers", speed = 0, enabled = false })
-hl.animation({ leaf = "fade", speed = 0, enabled = false })
-hl.animation({ leaf = "border", speed = 0, enabled = false })
-hl.animation({ leaf = "borderangle", speed = 0, enabled = false })
-hl.animation({ leaf = "specialWorkspace", speed = 0, enabled = false })
+hl.animation({ leaf = "windows", enabled = false })
+hl.animation({ leaf = "layers", enabled = false })
+hl.animation({ leaf = "fade", enabled = false })
+hl.animation({ leaf = "border", enabled = false })
+hl.animation({ leaf = "borderangle", enabled = false })
+hl.animation({ leaf = "specialWorkspace", enabled = false })
+
 hl.animation({ leaf = "workspaces", enabled = true, speed = 5, bezier = "wind" })
 
-hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
+-- ════════════════════════════════════════════
+-- Key Bindings
+-- ════════════════════════════════════════════
 
--- Bindings --
+hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
 
 local main_mod = "SUPER"
 
@@ -140,9 +144,12 @@ hl.bind(main_mod .. " + End", hl.dsp.exec_cmd("loginctl lock-session"), { locked
 
 -- Window ops
 hl.bind(main_mod .. " + Q", hl.dsp.window.close())
-hl.bind(main_mod .. " + F", hl.dsp.exec_cmd("hyprctl dispatch fullscreen"))
-hl.bind(main_mod .. " + T", hl.dsp.exec_cmd("hyprctl dispatch togglegroup"))
-hl.bind(main_mod .. " + SHIFT + Space", hl.dsp.exec_cmd("hyprctl dispatch togglefloating && hyprctl dispatch centerwindow"))
+hl.bind(main_mod .. " + F", hl.dsp.window.fullscreen())
+hl.bind(main_mod .. " + T", hl.dsp.group.toggle())
+hl.bind(main_mod .. " + SHIFT + Space", function()
+	hl.dispatch(hl.dsp.window.float({ action = "toggle" }))
+	hl.dispatch(hl.dsp.window.center())
+end)
 
 -- Launchers
 hl.bind(main_mod .. " + Return", hl.dsp.exec_cmd(script_path .. "/run-terminal.sh"))
@@ -158,7 +165,11 @@ hl.bind(main_mod .. " + W", hl.dsp.exec_cmd("killall -SIGUSR1 waybar"))
 hl.bind(main_mod .. " + SHIFT + W", hl.dsp.exec_cmd("killall -SIGKILL waybar; waybar; pgrep hyprpaper || hyprpaper"))
 
 -- Monitor toggle
-hl.bind(main_mod .. " + SHIFT + F1", hl.dsp.exec_cmd("hyprctl keyword monitor eDP-1,1920x1080,0x0,1"), { locked = true })
+hl.bind(
+	main_mod .. " + SHIFT + F1",
+	hl.dsp.exec_cmd("hyprctl keyword monitor eDP-1,1920x1080,0x0,1"),
+	{ locked = true }
+)
 
 -- Focus
 hl.bind(main_mod .. " + h", hl.dsp.focus({ direction = "left" }))
@@ -177,25 +188,25 @@ for i = 1, 10 do
 end
 
 -- Swap
-hl.bind(main_mod .. " + h", hl.dsp.exec_cmd("hyprctl dispatch swapwindow left"))
-hl.bind(main_mod .. " + j", hl.dsp.exec_cmd("hyprctl dispatch swapwindow down"))
-hl.bind(main_mod .. " + k", hl.dsp.exec_cmd("hyprctl dispatch swapwindow up"))
-hl.bind(main_mod .. " + l", hl.dsp.exec_cmd("hyprctl dispatch swapwindow right"))
-hl.bind(main_mod .. " + Left", hl.dsp.exec_cmd("hyprctl dispatch swapwindow left"))
-hl.bind(main_mod .. " + Down", hl.dsp.exec_cmd("hyprctl dispatch swapwindow down"))
-hl.bind(main_mod .. " + Up", hl.dsp.exec_cmd("hyprctl dispatch swapwindow up"))
-hl.bind(main_mod .. " + Right", hl.dsp.exec_cmd("hyprctl dispatch swapwindow right"))
+hl.bind(main_mod .. " + SHIFT + h", hl.dsp.window.swap({ direction = "left" }))
+hl.bind(main_mod .. " + SHIFT + j", hl.dsp.window.swap({ direction = "down" }))
+hl.bind(main_mod .. " + SHIFT + k", hl.dsp.window.swap({ direction = "up" }))
+hl.bind(main_mod .. " + SHIFT + l", hl.dsp.window.swap({ direction = "right" }))
+hl.bind(main_mod .. " + SHIFT + Left", hl.dsp.window.swap({ direction = "left" }))
+hl.bind(main_mod .. " + SHIFT + Down", hl.dsp.window.swap({ direction = "down" }))
+hl.bind(main_mod .. " + SHIFT + Up", hl.dsp.window.swap({ direction = "up" }))
+hl.bind(main_mod .. " + SHIFT + Right", hl.dsp.window.swap({ direction = "right" }))
 
 -- Resize
 hl.bind(main_mod .. " + R", hl.dsp.window.resize(), { mouse = true })
-hl.bind(main_mod .. " + ALT + Left", hl.dsp.exec_cmd("hyprctl dispatch resizeactive-60 0"))
-hl.bind(main_mod .. " + ALT + h", hl.dsp.exec_cmd("hyprctl dispatch resizeactive-60 0"))
-hl.bind(main_mod .. " + ALT + Right", hl.dsp.exec_cmd("hyprctl dispatch resizeactive 60 0"))
-hl.bind(main_mod .. " + ALT + l", hl.dsp.exec_cmd("hyprctl dispatch resizeactive 60 0"))
-hl.bind(main_mod .. " + ALT + Up", hl.dsp.exec_cmd("hyprctl dispatch resizeactive 0 -60"))
-hl.bind(main_mod .. " + ALT + k", hl.dsp.exec_cmd("hyprctl dispatch resizeactive 0 -60"))
-hl.bind(main_mod .. " + ALT + Down", hl.dsp.exec_cmd("hyprctl dispatch resizeactive 0  60"))
-hl.bind(main_mod .. " + ALT + j", hl.dsp.exec_cmd("hyprctl dispatch resizeactive 0  60"))
+hl.bind(main_mod .. " + ALT + Left", hl.dsp.window.resize({ x = -60, y = 0 }))
+hl.bind(main_mod .. " + ALT + h", hl.dsp.window.resize({ x = -60, y = 0 }))
+hl.bind(main_mod .. " + ALT + Right", hl.dsp.window.resize({ x = 60, y = 0 }))
+hl.bind(main_mod .. " + ALT + l", hl.dsp.window.resize({ x = 60, y = 0 }))
+hl.bind(main_mod .. " + ALT + Up", hl.dsp.window.resize({ x = 0, y = -60 }))
+hl.bind(main_mod .. " + ALT + k", hl.dsp.window.resize({ x = 0, y = -60 }))
+hl.bind(main_mod .. " + ALT + Down", hl.dsp.window.resize({ x = 0, y = 60 }))
+hl.bind(main_mod .. " + ALT + j", hl.dsp.window.resize({ x = 0, y = 60 }))
 
 -- Scratchpad
 hl.bind(main_mod .. " + S", hl.dsp.workspace.toggle_special("magic"))
@@ -214,10 +225,26 @@ hl.bind("KP_SUBTRACT", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%
 hl.bind("CTRL + KP_SUBTRACT", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true })
 
 -- Laptop multimedia
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { locked = true, repeating = true })
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true, repeating = true })
-hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), { locked = true, repeating = true })
+hl.bind(
+	"XF86AudioRaiseVolume",
+	hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
+	{ locked = true, repeating = true }
+)
+hl.bind(
+	"XF86AudioLowerVolume",
+	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
+	{ locked = true, repeating = true }
+)
+hl.bind(
+	"XF86AudioMute",
+	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
+	{ locked = true, repeating = true }
+)
+hl.bind(
+	"XF86AudioMicMute",
+	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
+	{ locked = true, repeating = true }
+)
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
@@ -248,7 +275,9 @@ hl.window_rule({
 	max_size = { 1344, 756 },
 })
 
--- Rules --
+-- ════════════════════════════════════════════
+-- Window Rules
+-- ════════════════════════════════════════════
 
 hl.workspace_rule({ workspace = "special:scratchpad", gaps_out = 25 })
 
